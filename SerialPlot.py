@@ -58,9 +58,9 @@ try:
 except AttributeError:
     stopThread = True
     print("Fechou o plot.")
-    print("Salvando em arquivo...")
-    with open("Dados.txt", "w") as f:
-        f.writelines(["%s %s\n" % (t, a) for t, a in zip(timeList, audioList)])
-    print("Feito.")
-        
-s.close()
+    s.close()
+    
+print("Salvando em arquivo...")
+with open("Dados.txt", "w") as f:
+    f.writelines(["%s %s\n" % (t, a) for t, a in zip(timeList, audioList)])
+print("Feito.")
