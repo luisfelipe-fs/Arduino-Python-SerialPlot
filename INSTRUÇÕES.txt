@@ -1,8 +1,8 @@
 Baixe esta versão do Python
-https://www.python.org/downloads/release/python-368/
+https://www.python.org/downloads/release/python-2715/
 
 Depois de instalar, rode os seguintes comandos no terminal:
-pip install serial
+pip install pyserial
 pip install matplotlib
 
 Abra o editor "IDLE", que está instalado na pasta da Python
