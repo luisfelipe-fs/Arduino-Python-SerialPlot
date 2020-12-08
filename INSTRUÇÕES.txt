@@ -1,0 +1,10 @@
+Baixe esta versão do Python
+https://www.python.org/downloads/release/python-368/
+
+Depois de instalar, rode os seguintes comandos no terminal:
+pip install serial
+pip install matplotlib
+
+Abra o editor "IDLE", que está instalado na pasta da Python
+Com o IDLE, abra o arquivo "SerialPlot.py" e altere a porta do arduino
+Rode o programa (Run > Run Module F5)
