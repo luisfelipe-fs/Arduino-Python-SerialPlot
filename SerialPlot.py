@@ -10,16 +10,20 @@ timeList = deque(maxlen=5000)
 audioList = deque(maxlen=5000)
 stopThread = False
 
-s = serial.Serial('/dev/ttyACM0') # PORTA DO ARDUINO
+# Porta COM1, COM2, etc. no windows
+s = serial.Serial('/dev/ttyACM1', baudrate=31250)
 
 # Removendo lixo
-for i in range(100): line = s.readline()
+for i in range(25): line = s.readline()
+
+def setDuration (seconds):
+    return int(seconds/0.02)
 
 def getSerialData ():
     global s, stopThread
 
     count = 0
-    maxCount = 1500 # ~15 segundos
+    maxCount = setDuration(10)
     while not stopThread and count < maxCount:
         try:
             line = s.readline()
@@ -42,9 +46,9 @@ thread.start()
 
 def onlinePlot (i, timeList, tempList):
     ax.clear()
-    ax.set_title("Monitor")
+    ax.set_title("Afinador")
     ax.set_xlabel("Tempo (s)")
-    ax.set_ylabel("Amplitude (dB)")
+    ax.set_ylabel("Amplitude")
     ax.plot(timeList, tempList)
 
 print('Conectado a porta %s.\n\n' % s.name)
@@ -61,6 +65,6 @@ except AttributeError:
     s.close()
     
 print("Salvando em arquivo...")
-with open("Dados.txt", "w") as f:
+with open(".data/Dados.txt", "w") as f:
     f.writelines(["%s %s\n" % (t, a) for t, a in zip(timeList, audioList)])
 print("Feito.")

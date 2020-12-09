@@ -1,11 +1,10 @@
 void setup() {
-  Serial.begin(9600); // Nota: Baud < Frequência de captura (1ms+FLOPS)
-  pinMode(A0, INPUT); // = CONECTE A SAÍDA DO FILTRO EM A0
+  Serial.begin(31250);
+  pinMode(A0, INPUT);
 }
 
 void loop() {
-  long t = millis();
-  int x = analogRead(A0);
-  Serial.println(String(t) + " " + String(x));
-  delay(1);
+  Serial.print(millis());
+  Serial.print(" ");
+  Serial.println(analogRead(A0));
 }
